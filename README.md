@@ -1,4 +1,4 @@
-![uggo](https://user-images.githubusercontent.com/21694364/53290574-fbfded00-3773-11e9-9acb-e9b3cd2c9905.jpg)
+![uggo](https://user-images.githubusercontent.com/21694364/53292945-2615d600-3799-11e9-8a6f-f1a29e34bf4d.jpg)
 Inspired by the complicated loggers in node, Uggo believes in simple beautiful logs. Minimal setup with feauture rich logging abilities. Out of the box comes with logging to a file, logging to console and logging with timestamp, scope, and message.
 
 ## Installing
