@@ -1,31 +1,51 @@
-<<<<<<< HEAD
 ![uggo](https://user-images.githubusercontent.com/21694364/53290574-fbfded00-3773-11e9-9acb-e9b3cd2c9905.jpg)
-=======
-![uggo](https://user-images.githubusercontent.com/21694364/53290574-fbfded00-3773-11e9-9acb-e9b3cd2c9905.jpg)
-Inspired by the complicated loggers in node,  Uggo believes in  simple beautiful logs. Minimal setup with feauture rich logging abilities.
+Inspired by the complicated loggers in node, Uggo believes in simple beautiful logs. Minimal setup with feauture rich logging abilities. Out of the box comes with logging to a file, logging to console and logging with timestamp, scope, and message.
 
 ## Installing
+
 ```
 npm install uggo
 ```
 
 ## Getting Started
+
 ```javascript
 import { Uggo } from "uggo";
 
 const log = new Uggo({ destination: "logs" });
 
-log.error("Oops something went wrong!")
+log.info("Request sucesfully processed.");
+log.error("Oops something went wrong!");
 ```
 
 ## Instantiating Uggo
+
 ```javascript
 // Standard
-const log = new Uggo({ destination: "logs" });  // [error] 2-6-2019 [13:56:11] Ooops an error occured
+const log = new Uggo({ destination: "logs" }); // [error] 2-6-2019 [13:56:11] Ooops an error occured
 
 // Options
 // json -> logs to file in json format
-// silent -> Option to log on the console or not.
-const log = new Uggo({ destination: "logs", json:true, silent: false });
+// silent -> log on the console or not.
+const log = new Uggo({ destination: "logs", json: true, silent: false });
 ```
->>>>>>> 275d974201bfbf76bdae70f6254bf8f1923acee3
+
+## Examples
+
+```javascript
+import { Uggo } from "uggo";
+
+const log = new Uggo({ destination: "logs", silent: false });
+
+async function fetch() {
+  try {
+    const { data } = await axios.get("/");
+
+    log.info(data.message);
+    return data;
+  } catch (error) {
+    log.error(error.message);
+    return false;
+  }
+}
+```
