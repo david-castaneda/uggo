@@ -126,7 +126,18 @@ export class Uggo {
     log(`${lvl} ${stamp} ${message}`);
   }
 
-  public error(message: string, options: InstanceSettings): void {
+  /**
+   * Log the info message on the console
+   */
+  public logInfoMessage(level: string, message: string): void {
+    const { log } = console;
+    const lvl: string = colors.green(`[${level}]`);
+    const stamp: string = colors.yellow(this.getTimestamp());
+
+    log(`${lvl} ${stamp} ${message}`);
+  }
+
+  public error(message: string): void {
     // Setup log destination
     const destination: string = this.getDestination();
     const filepath: string = `${destination}/error-${this.getDate()}.log`;
@@ -150,5 +161,24 @@ export class Uggo {
         this.logErrorMessage("error", message));
   }
 
-  public info(message: string, options: InstanceSettings): void {}
+  public info(message: string): void {
+    // Setup log destination
+    const destination: string = this.getDestination();
+    const filepath: string = `${destination}/info-${this.getDate()}.log`;
+
+    const fJSON: string = this.formatJSONLog({ level: "info", message });
+    const fString: string = this.formatStringLog("info", message);
+
+    let fMessage: string = this.json ? fJSON + "\n" : fString + "\n";
+
+    // Create stream & write to file
+    const wstream = fs.createWriteStream(filepath, { flags: "a" });
+    wstream.write(fMessage);
+    wstream.end();
+
+    // Log to console based on options
+    this.silent ||
+      (String(this.silent) !== "undefined" &&
+        this.logInfoMessage("info", message));
+  }
 }
