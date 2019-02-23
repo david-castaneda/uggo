@@ -1,0 +1,11 @@
+node_modules
+dist
+lib
+compiled
+examples
+
+logs
+logger
+*.log
+.DS_Store
+.env
