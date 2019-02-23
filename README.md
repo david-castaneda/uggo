@@ -1,4 +1,6 @@
 ![uggo](https://user-images.githubusercontent.com/21694364/53292945-2615d600-3799-11e9-8a6f-f1a29e34bf4d.jpg)
+[![npm version](https://badge.fury.io/js/uggo.svg)](https://badge.fury.io/js/uggo) 
+
 Inspired by the complicated loggers in node, Uggo believes in simple beautiful logs. Minimal setup with feauture rich logging abilities. Out of the box comes with logging to a file, logging to console and logging with timestamp, scope, and message.
 
 ## Installing
