@@ -9,12 +9,6 @@ interface UggoInitializer {
   json: boolean;
 }
 
-interface InstanceSettings {
-  [key: string]: any;
-  json: boolean;
-  silent: boolean;
-}
-
 export class Uggo {
   protected destination: string;
   public silent: boolean = true;
@@ -78,16 +72,16 @@ export class Uggo {
    */
   public getTimestamp(): string {
     let date: Date = new Date();
-    let day = date.getDay();
-    let month = date.getMonth() + 1;
+    let day: any = date.getDate();
+    let month: any = date.getMonth() + 1;
     let year = date.getFullYear();
     let hour = date.getHours();
     let min = date.getMinutes();
-    let sec = date.getSeconds();
+    let sec: any = date.getSeconds();
 
-    day > 10 && (day = Number(`0${day}`));
-    month < 10 && (month = Number(`0${month}`));
-    sec < 10 && (sec = Number(`0${sec}`));
+    day < 10 && (day = `0${day}`);
+    month < 10 && (month = `0${month}`);
+    sec < 10 && (sec = `0${sec}`);
 
     const timestamp = `${month}-${day}-${year} [${hour}:${min}:${sec}]`;
 
@@ -101,6 +95,7 @@ export class Uggo {
     let opRes: any = new Object();
 
     opRes.timestamp = this.getTimestamp();
+
     Object.keys(obj).forEach(key => (opRes[key] = obj[key]));
 
     return JSON.stringify(opRes);

@@ -1,10 +1,11 @@
 {
   "name": "uggo",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "📝 Minimalistic logger tool for node.js",
   "main": "./lib/main.js",
   "author": "David Castaneda <dcast188@fiu.edu>",
   "license": "ISC",
+  "repository": "david-castaneda/uggo",
   "scripts": {
     "build": "npx tsc",
     "start": "yarn build && cd ./lib && node main.js",
